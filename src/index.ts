@@ -10,41 +10,28 @@ app.listen(app.get('port'), ()=>{
     console.log('Server is running')
 });
 
-interface cliente {
-    id: number;
+
+class Persona {
+    id:number;
     nombre: string;
     apellidos: string;
-  }
 
-let cliente1: cliente =  {
-    id:1,
-    nombre: "fernando",
-    apellidos: "gisbert"
+    constructor(nuevaId:number,nuevoNombre:string,nuevoApellidos:string) {
+       this.id=nuevaId;
+       this.nombre=nuevoNombre;
+       this.apellidos=nuevoApellidos;
+    }
+    
 }
 
-let cliente2: cliente =  {
-    id:2,
-    nombre: "pepe",
-    apellidos: "perez"
-}
-let cliente3: cliente =  {
-    id:3,
-    nombre: "pepito",
-    apellidos: "perez"
-}
-
-let cliente4: cliente =  {
-    id:4,
-    nombre: "manolito",
-    apellidos: "gafotas"
-}
+let cliente1 = new Persona(1,'perico', 'el de los palotes');
+let cliente2 = new Persona(2,'manolito', 'gafotas');
+let cliente3 = new Persona(3,'pepe', 'perez');
+let cliente4 = new Persona(4,'david', 'bisbal');
+let cliente5 = new Persona(5,'rosa', 'lopez');
 
 
-let cliente5: cliente =  {
-    id:5,
-    nombre: "harry",
-    apellidos: "potter"
-}
+
 
 let arrayClientes = [cliente1, cliente2, cliente3, cliente4, cliente5];
 
@@ -55,7 +42,7 @@ app.get('/clients/', (req, res)=>{
 
 app.get('/clients/:idCliente', (req, res)=>{
 
-    console.log(`ruta con parametro ${req.params.idCliente}`);
+    console.log(`el id del cliente es ${req.params.idCliente}`);
 
     res.send(
         arrayClientes.filter(cliente=>{
